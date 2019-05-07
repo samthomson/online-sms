@@ -13,9 +13,13 @@ Auth0.
 
 ## todo
 
+- routing
 - auth
-- db as a service (ideally not firebase)
+	- crude implementation
+	- guarded routes
 - graphql
+	- guarded data (requires auth token)
+- db
 - client redux
 - twillio integration
 - send email on new sms
