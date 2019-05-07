@@ -3,6 +3,7 @@ services:
   client:
     build:
       context: ./client
+    command: yarn run start
     ports:
       - "3000:3000"
     volumes:

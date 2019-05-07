@@ -6,8 +6,6 @@ EXPOSE 3000
 
 ADD . /client
 
-# RUN yarn --silent
+RUN yarn --silent
 
-# RUN yarn run build
-
-# CMD yarn run start
+RUN yarn run build

@@ -7,8 +7,10 @@ Auth0.
 ## todo
 
 - server / client architecture
+- env & env sample, readme instructions
 - auth
-- mysql
+- db as a service (ideally not firebase)
 - graphql
 - client redux
 - twillio integration
+- send email on new sms
