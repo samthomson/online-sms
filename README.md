@@ -13,13 +13,12 @@ Auth0.
 
 ## todo
 
-- routing
-- auth
-	- crude implementation
-	- guarded routes
 - graphql
-	- guarded data (requires auth token)
 - db
 - client redux
 - twillio integration
 - send email on new sms
+- auth
+	- crude implementation
+	- guarded routes
+	- guard data with graphql

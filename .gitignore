@@ -5,3 +5,7 @@ server/node_modules
 # build assets
 client/build
 server/dist
+
+
+# config
+.env
