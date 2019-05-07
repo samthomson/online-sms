@@ -6,7 +6,6 @@ Auth0.
 
 ## todo
 
-- server / client architecture
 - env & env sample, readme instructions
 - auth
 - db as a service (ideally not firebase)
