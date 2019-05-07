@@ -1,0 +1,17 @@
+version: "2"
+services:
+  client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/client
+  server:
+    build:
+      context: ./server
+    command: yarn run watch
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./server:/server
