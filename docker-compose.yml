@@ -14,6 +14,13 @@ services:
     command: yarn run watch
     ports:
       - "3100:3100"
+    environment:
+      - DB_HOST=mysql
+      - MYSQL_DATABASE=${DATABASE_NAME}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - API_KEY=${GATEWAYAPI_KEY}
+      - API_SECRET=${GATEWAYAPI_SECRET}
+      - API_TOKEN=${GATEWAYAPI_TOKEN}
     volumes:
       - ./server:/server
     depends_on:
