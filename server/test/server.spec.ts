@@ -20,7 +20,7 @@ describe('server', async () => {
 				.post('/handlesms')
 				.then(res => {
 					chai.expect(res.status).to.eql(200)
-					chai.expect(res.text).to.eql('O k')
+					chai.expect(res.text).to.eql('Ok')
 				})
 		})
 	})
