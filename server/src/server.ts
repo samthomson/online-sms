@@ -30,6 +30,13 @@ app.post('/handlesms', (req: Request, res: Response) => {
 	const oSMS: SMS = req.body
 	console.log('sms received?')
 	console.log(oSMS)
+
+	// does it have the correct params
+	const nRequiredParams: number = 6
+	if (Object.keys(oSMS).length !== nRequiredParams) {
+		return res.status(422).send()
+	}
+
 	res.status(200).send('Ok')
 })
 
