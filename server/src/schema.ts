@@ -5,7 +5,7 @@ import {
 	GraphQLFloat,
 	GraphQLInt,
 } from 'graphql'
-import axios from 'axios'
+import { oGetBalance } from './sms-api'
 
 const AccountBalanceType = new GraphQLObjectType({
 	name: 'AccountBalanceType',
@@ -29,17 +29,3 @@ const RootQuery = new GraphQLObjectType({
 export default new GraphQLSchema({
 	query: RootQuery,
 })
-
-const oGetBalance = async () => {
-	try {
-		const { API_TOKEN } = process.env
-		const { data } = await axios.get('https://gatewayapi.com/rest/me', {
-			params: { token: API_TOKEN },
-		})
-
-		return data
-	} catch (error) {
-		console.log(error)
-		return {}
-	}
-}
