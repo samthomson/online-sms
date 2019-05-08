@@ -5,13 +5,14 @@ import {
 	GraphQLFloat,
 	GraphQLInt,
 } from 'graphql'
+import axios from 'axios'
 
 const AccountBalanceType = new GraphQLObjectType({
 	name: 'AccountBalanceType',
 	fields: () => ({
 		credit: { type: GraphQLFloat },
 		currency: { type: GraphQLString },
-		accountId: { type: GraphQLInt },
+		id: { type: GraphQLInt },
 	}),
 })
 
@@ -20,13 +21,7 @@ const RootQuery = new GraphQLObjectType({
 	fields: () => ({
 		balance: {
 			type: AccountBalanceType,
-			resolve: async () => {
-				return {
-					credit: 100.12,
-					currency: 'DKK',
-					accountId: 54,
-				}
-			},
+			resolve: async () => await oGetBalance(),
 		},
 	}),
 })
@@ -34,3 +29,17 @@ const RootQuery = new GraphQLObjectType({
 export default new GraphQLSchema({
 	query: RootQuery,
 })
+
+const oGetBalance = async () => {
+	try {
+		const { API_TOKEN } = process.env
+		const { data } = await axios.get('https://gatewayapi.com/rest/me', {
+			params: { token: API_TOKEN },
+		})
+
+		return data
+	} catch (error) {
+		console.log(error)
+		return {}
+	}
+}
