@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  build-server:
+    docker:
+      - image: mhart/alpine-node
+    steps:
+      - checkout
+      - run:
+          name: Build server
+          command: |
+            cd server
+            yarn
+            yarn run build
+  test-server:
+    docker:
+      - image: mhart/alpine-node
+    steps:
+      - checkout
+      - run:
+          name: Test server
+          command: |
+            cd server
+            yarn
+            yarn run test
+  build-client:
+    docker:
+      - image: mhart/alpine-node
+    steps:
+      - checkout
+      - run:
+          name: Build client
+          command: |
+            cd client
+            yarn
+            yarn run build
+
+workflows:
+  version: 2
+  all:
+    jobs:
+      - build-server
+      - test-server
+      - build-client
