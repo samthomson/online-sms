@@ -16,9 +16,8 @@ Integrated with gateway API: https://gatewayapi.com/docs/rest.html#mo-sms-receiv
 
 ## todo
 
-- parse into a typed object
+- tests
 - test with number
 - store in db?
-- tests
 - send email on new sms
 - protect graphql with auth
