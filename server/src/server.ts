@@ -5,6 +5,7 @@ import * as bodyParser from 'body-parser'
 import schema from './schema'
 
 import { Application, Request, Response } from 'express'
+import { SMS } from './declarations'
 
 const app: Application = express()
 
@@ -26,9 +27,10 @@ app.post('/handlesms', (req: Request, res: Response) => {
 	/*
 	{"id": 1000001, "msisdn": 4587654321, "receiver": 451204, "message": "test message", "senttime": 1557335005, "webhook_label": "Fepeyor", "country_code": null, "country_prefix": null}
 	*/
+	const oSMS: SMS = req.body
 	console.log('sms received?')
-	console.log(req.body)
-	res.end('sms?')
+	console.log(oSMS)
+	res.send('sms?')
 })
 
 // set up graphql

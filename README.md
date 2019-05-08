@@ -10,6 +10,10 @@ The client is a React TS SPA with redux / graphQL.
 - install dependencies for each container: `docker-compose run client yarn && docker-compose run server yarn`
 - finally `docker-compose up`, you can now browse to `http://localhost:3000`
 
+## notes
+
+Integrated with gateway API: https://gatewayapi.com/docs/rest.html#mo-sms-receiving-sms-es
+
 ## todo
 
 - parse into a typed object
