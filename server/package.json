@@ -1,4 +1,5 @@
 {
+	"name": "server",
 	"dependencies": {
 		"axios": "^0.18.0",
 		"body-parser": "^1.19.0",
@@ -22,6 +23,7 @@
 		"tsc-watch": "^2.1.2"
 	},
 	"scripts": {
+		"build": "tsc",
 		"start": "ts-node src/server.ts",
 		"test": "mocha -r ts-node/register test/**/*.spec.ts --exit",
 		"watch": "tsc-watch --onSuccess \"yarn run start\""
