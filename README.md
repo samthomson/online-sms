@@ -2,7 +2,6 @@
 
 Typescript server app which has webhook endpoints for twillio, and a grpahQL API for the client.
 The client is a React TS SPA with redux / graphQL.
-Auth0.
 
 ## setup
 
@@ -13,11 +12,8 @@ Auth0.
 
 ## todo
 
-- graphql
-	- query for current balance, should resolve to gateway api
+- handle sms?
 - db
-- client redux
-- twillio integration
 - send email on new sms
 - auth
 	- crude implementation

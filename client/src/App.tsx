@@ -4,10 +4,12 @@ import { connect } from 'react-redux'
 import './../node_modules/semantic-ui-css/semantic.min.css'
 import './App.css'
 
-import { Store } from './redux/store'
+import { Balance } from 'src/declarations'
+import { Store } from 'src/redux/store'
 
 interface IAppProps {
 	nPhoneNumber: number
+	nAccountBalance: Balance
 }
 
 class App extends React.Component<IAppProps, {}> {
@@ -16,12 +18,16 @@ class App extends React.Component<IAppProps, {}> {
 	}
 
 	public render() {
-		const { nPhoneNumber } = this.props
+		const { nAccountBalance } = this.props
 
 		return (
 			<div className="App ui container">
 				<h1>online-sms</h1>
-				<p>{nPhoneNumber}</p>
+				<p>
+					{nAccountBalance === null
+						? '[balance unknown]'
+						: nAccountBalance}
+				</p>
 				<hr />
 				{moment().format('DD MM YYYY')}
 			</div>
@@ -30,8 +36,9 @@ class App extends React.Component<IAppProps, {}> {
 }
 
 const mapStateToProps = (state: Store.App) => {
-	const { nPhoneNumber } = state
+	const { nAccountBalance, nPhoneNumber } = state
 	return {
+		nAccountBalance,
 		nPhoneNumber,
 	}
 }

@@ -2,6 +2,7 @@ import { Action } from './actions'
 import { Store } from './store'
 
 const initialState: Store.App = {
+	nAccountBalance: null,
 	nPhoneNumber: null,
 }
 
@@ -10,10 +11,10 @@ export function appReducers(
 	action: Action,
 ): Store.App {
 	switch (action.type) {
-		case 'GET_NUMBER':
+		case 'GET_BALANCE_SUCCEEDED' || 'GET_BALANCE_FAILED':
 			return {
 				...state,
-				nPhoneNumber: 5522079,
+				nAccountBalance: action.nBalance,
 			}
 	}
 
