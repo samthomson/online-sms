@@ -30,7 +30,7 @@ app.post('/handlesms', (req: Request, res: Response) => {
 	const oSMS: SMS = req.body
 	console.log('sms received?')
 	console.log(oSMS)
-	res.send('sms?')
+	res.send('Ok')
 })
 
 // set up graphql
