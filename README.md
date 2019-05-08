@@ -14,6 +14,7 @@ Auth0.
 ## todo
 
 - graphql
+	- query for current balance, should resolve to gateway api
 - db
 - client redux
 - twillio integration
