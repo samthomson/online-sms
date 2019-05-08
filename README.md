@@ -12,10 +12,9 @@ The client is a React TS SPA with redux / graphQL.
 
 ## todo
 
-- handle sms?
-- db
+- parse into a typed object
+- test with number
+- store in db?
+- tests
 - send email on new sms
-- auth
-	- crude implementation
-	- guarded routes
-	- guard data with graphql
+- protect graphql with auth
