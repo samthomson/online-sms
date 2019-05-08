@@ -16,8 +16,8 @@ var corsOptions = {
 }
 app.use(cors(corsOptions))
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.get('/', ({}, response: Response) => {
 	response.send('root')
@@ -30,7 +30,7 @@ app.post('/handlesms', (req: Request, res: Response) => {
 	const oSMS: SMS = req.body
 	console.log('sms received?')
 	console.log(oSMS)
-	res.send('Ok')
+	res.status(200).send('Ok')
 })
 
 // set up graphql
@@ -43,3 +43,5 @@ app.use(
 )
 
 app.listen(3100)
+
+export default app
