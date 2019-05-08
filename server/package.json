@@ -11,14 +11,19 @@
 		"typescript": "^3.4.5"
 	},
 	"devDependencies": {
+		"@types/chai": "^4.1.7",
 		"@types/cors": "^2.8.5",
 		"@types/express": "^4.16.1",
 		"@types/express-graphql": "^0.8.0",
 		"@types/graphql": "^14.2.0",
+		"@types/mocha": "^5.2.6",
+		"chai": "^4.2.0",
+		"mocha": "^6.1.4",
 		"tsc-watch": "^2.1.2"
 	},
 	"scripts": {
 		"start": "ts-node src/server.ts",
+		"test": "mocha -r ts-node/register test/**/*.spec.ts --exit",
 		"watch": "tsc-watch --onSuccess \"yarn run start\""
 	}
 }
