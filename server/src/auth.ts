@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
-
-const sSMSAuthTokenHeader: string = 'x-gwapi-signature'
-const sExpectedAuthTokenValue: string | null =
-	process.env.GAPI_AUTH_TOKEN || null
+import * as jwt from 'jsonwebtoken'
+import { sSMSAuthTokenHeader } from '../src/declarations'
+const sJWTAuthSecret: string | null = process.env.GAPI_AUTH_TOKEN || null
 
 export const _handleSMSAuth = (
 	req: Request,
@@ -10,16 +9,33 @@ export const _handleSMSAuth = (
 	next: NextFunction,
 ) => {
 	// X-Gwapi-Signature header
-	console.log(req.headers)
+	const sAuthTokenFromHeader: string | null =
+		req.get(sSMSAuthTokenHeader) || null
+
 	if (
-		sExpectedAuthTokenValue && // token auth is mandatory
-		req.headers[sSMSAuthTokenHeader] &&
-		req.headers[sSMSAuthTokenHeader] === sExpectedAuthTokenValue
+		sJWTAuthSecret && // token auth is mandatory
+		sAuthTokenFromHeader
 	) {
 		// header is set, and contains value we expected
-		next()
+		// console.log('sAuthToken', sAuthTokenFromHeader)
+		// console.log('sAuthTsExpectedAuthTokenValueoken', sJWTAuthSecret)
+		try {
+			const oVerifiedToken = jwt.verify(
+				sAuthTokenFromHeader,
+				sJWTAuthSecret,
+			)
+			// console.log('verified: ', oVerifiedToken)
+			res.locals.decodedToken = oVerifiedToken
+			next()
+		} catch (err) {
+			// console.log('\nauth token not verifiable\n')
+			// console.log(err)
+			// next(err)
+			return res.status(401).send('auth token not verifiable')
+		}
 	} else {
-		console.log('SMS handler was hit without appropriate auth token')
-		return res.status(401).send()
+		// console.log('SMS handler was hit without auth token')
+		// error decoding auth token - will now proceed to return 401
+		return res.status(401).send('SMS handler was hit without auth token')
 	}
 }
