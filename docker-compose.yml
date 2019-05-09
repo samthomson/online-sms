@@ -21,6 +21,7 @@ services:
       - API_KEY=${GATEWAYAPI_KEY}
       - API_SECRET=${GATEWAYAPI_SECRET}
       - API_TOKEN=${GATEWAYAPI_TOKEN}
+      - GAPI_AUTH_TOKEN=${GAPI_AUTH_TOKEN}
     volumes:
       - ./server:/server
     depends_on:

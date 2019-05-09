@@ -4,7 +4,9 @@ import * as expressGraphQL from 'express-graphql'
 import * as bodyParser from 'body-parser'
 import schema from './schema'
 
-import { Application, NextFunction, Request, Response } from 'express'
+import { _handleSMSAuth } from './auth'
+
+import { Application, Request, Response } from 'express'
 import { SMS } from './declarations'
 
 const app: Application = express()
@@ -22,16 +24,6 @@ app.use(bodyParser.json())
 app.get('/', ({}, response: Response) => {
 	response.send('root')
 })
-
-const _handleSMSAuth = (req: Request, res: Response, next: NextFunction) => {
-	if (req.body.token && req.body.token === 'sam') {
-		next() //If session exists, proceed to page
-	} else {
-		var err = new Error('Missing token')
-		res.status(401).send()
-		next(err)
-	}
-}
 
 app.post('/handlesms', _handleSMSAuth, (req: Request, res: Response) => {
 	/*
