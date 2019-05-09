@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import * as jwt from 'jsonwebtoken'
-import { sSMSAuthTokenHeader } from '../src/declarations'
+import { sSMSAuthTokenHeader } from '../declarations'
 const sJWTAuthSecret: string | null = process.env.GAPI_AUTH_TOKEN || null
 
 export const _handleSMSAuth = (

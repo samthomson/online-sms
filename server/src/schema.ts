@@ -5,7 +5,7 @@ import {
 	GraphQLFloat,
 	GraphQLInt,
 } from 'graphql'
-import { oGetBalance } from './sms-api'
+import { oGetBalance } from './lib/sms-api'
 
 const AccountBalanceType = new GraphQLObjectType({
 	name: 'AccountBalanceType',

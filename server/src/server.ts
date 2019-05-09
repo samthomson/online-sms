@@ -4,12 +4,12 @@ import * as expressGraphQL from 'express-graphql'
 import * as bodyParser from 'body-parser'
 import schema from './schema'
 
-import { _handleSMSAuth } from './auth'
+import { _handleSMSAuth } from './lib/auth'
 
 import { Application, Response } from 'express'
 import { SMS } from './declarations'
 
-import { bValidSMS } from './validate'
+import { bValidSMS } from './lib/validate'
 
 const app: Application = express()
 
