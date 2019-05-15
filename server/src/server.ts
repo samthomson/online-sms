@@ -29,7 +29,7 @@ app.get('/', ({}, response: Response) => {
 
 app.post('/handlesms', _handleSMSAuth, ({}, res: Response) => {
 	/*
-	{"id": 1000001, "msisdn": 4587654321, "receiver": 451204, "message": "test message", "senttime": 1557335005, "webhook_label": "Fepeyor", "country_code": null, "country_prefix": null, "iat": 451204}
+	{"id": 1000001, "msisdn": 4587654321, "receiver": 451204, "message": "test message", "senttime": 1557335005, "webhook_label": "Fepeyor", "country_code": null, "country_prefix": null}
 	*/
 	let oSMS: SMS = <SMS>res.locals.decodedToken
 

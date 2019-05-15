@@ -11,7 +11,7 @@ export const SMSModel = db.define('smss', {
 		type: Sequelize.BIGINT,
 	},
 	receiver: {
-		type: Sequelize.INTEGER,
+		type: Sequelize.BIGINT,
 	},
 	message: {
 		type: Sequelize.TEXT,

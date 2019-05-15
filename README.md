@@ -14,12 +14,17 @@ The client is a React TS SPA with redux / graphQL.
 
 Integrated with gateway API: https://gatewayapi.com/docs/rest.html#mo-sms-receiving-sms-es
 
+### testing with grok
+
+`./ngrok http http://localhost:3100` (from `$` on linux)
+
 ## todo
 
-- test with number
+- expose via graphql
 - send email on new sms
 - protect graphql with auth
 - UI
 - swap express for koa
 - server: root relative imports
 - server: TS friendly sequelize connection
+- log 422s?
