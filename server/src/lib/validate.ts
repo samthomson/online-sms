@@ -12,7 +12,7 @@ const oJOISchema = Joi.object().keys({
 	senttime: vNumber,
 	message: vString,
 	webhook_label: vString,
-	iat: vNumber,
+	// iat: vNumber,
 })
 
 const oJOIOptions = {
@@ -21,6 +21,8 @@ const oJOIOptions = {
 
 export const bValidSMS = (oPossibleSMS: object): boolean => {
 	const { error } = Joi.validate(oPossibleSMS, oJOISchema, oJOIOptions)
+
+	// console.log(error)
 
 	return error ? false : true
 }
