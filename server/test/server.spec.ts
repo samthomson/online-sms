@@ -43,6 +43,11 @@ describe('server', async () => {
 			senttime: 1557335005,
 			webhook_label: 'Fepeyor',
 		}
+		const oSMSOptionalParams: object = {
+			...oSMS,
+			country_code: 'DK',
+			country_prefix: 45,
+		}
 
 		const sSignedSMS: string = jwt.sign(oSMS, sJWTAuthSecret || '')
 		const sSignedSMSMissingParameters: string = jwt.sign(
@@ -55,6 +60,11 @@ describe('server', async () => {
 		)
 		const sSignedSMSExtremeParameters: string = jwt.sign(
 			oSMSExtremeParams,
+			sJWTAuthSecret || '',
+		)
+
+		const sSignedSMSOptionalParams: string = jwt.sign(
+			oSMSOptionalParams,
 			sJWTAuthSecret || '',
 		)
 
@@ -104,6 +114,14 @@ describe('server', async () => {
 				.post('/handlesms')
 				.set(sSMSAuthTokenHeader, sSignedSMS)
 			chai.expect(oMissingParametersResponse.status).to.eql(200)
+		})
+
+		it('succeeds when optional parameters are sent too', async () => {
+			// post message with correct/expected paramameters and optional params like country code
+			const oOptionalParametersResponse = await request(server)
+				.post('/handlesms')
+				.set(sSMSAuthTokenHeader, sSignedSMSOptionalParams)
+			chai.expect(oOptionalParametersResponse.status).to.eql(200)
 		})
 	})
 })

@@ -5,7 +5,7 @@ const vNumber = Joi.number()
 	.required()
 const vString = Joi.string().required()
 
-const schema = Joi.object().keys({
+const oJOISchema = Joi.object().keys({
 	id: vNumber,
 	msisdn: vNumber,
 	receiver: vNumber,
@@ -15,8 +15,12 @@ const schema = Joi.object().keys({
 	iat: vNumber,
 })
 
+const oJOIOptions = {
+	allowUnknown: true,
+}
+
 export const bValidSMS = (oPossibleSMS: object): boolean => {
-	const { error } = Joi.validate(oPossibleSMS, schema)
+	const { error } = Joi.validate(oPossibleSMS, oJOISchema, oJOIOptions)
 
 	return error ? false : true
 }

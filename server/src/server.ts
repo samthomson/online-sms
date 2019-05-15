@@ -21,7 +21,6 @@ var corsOptions = {
 app.use(cors(corsOptions))
 
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 
 app.get('/', ({}, response: Response) => {
 	response.send('root')
@@ -29,7 +28,7 @@ app.get('/', ({}, response: Response) => {
 
 app.post('/handlesms', _handleSMSAuth, ({}, res: Response) => {
 	/*
-	{"id": 1000001, "msisdn": 4587654321, "receiver": 451204, "message": "test message", "senttime": 1557335005, "webhook_label": "Fepeyor", "country_code": null, "country_prefix": null}
+	{"id": 1000001, "msisdn": 4587654321, "receiver": 451204, "message": "test message", "senttime": 1557335005, "webhook_label": "Fepeyor", "country_code": null, "country_prefix": null, "iat": 451204}
 	*/
 	let oSMS: SMS = <SMS>res.locals.decodedToken
 
@@ -39,7 +38,7 @@ app.post('/handlesms', _handleSMSAuth, ({}, res: Response) => {
 
 	// does it have the correct params
 	const nRequiredParams: number = 6 + 1 // x params, plus jwt ait prop
-	if (Object.keys(oSMS).length !== nRequiredParams) {
+	if (Object.keys(oSMS).length < nRequiredParams) {
 		return res.status(422).send('not enough keys')
 	}
 
