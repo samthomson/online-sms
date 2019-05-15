@@ -35,7 +35,7 @@
 	"scripts": {
 		"build": "tsc",
 		"start": "ts-node src/server.ts",
-		"test": "yarn migrate && mocha -r ts-node/register test/**/*.spec.ts --exit",
+		"test": "NODE_ENV=testing yarn migrate && NODE_ENV=testing mocha -r ts-node/register test/**/*.spec.ts --exit",
 		"watch": "tsc-watch --onSuccess \"yarn run start\"",
 		"migrate": "ts-node src/db/migrate.ts"
 	}
