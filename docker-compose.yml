@@ -15,9 +15,10 @@ services:
     ports:
       - "3100:3100"
     environment:
-      - DB_HOST=mysql
-      - MYSQL_DATABASE=${DATABASE_NAME}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - API_KEY=${GATEWAYAPI_KEY}
       - API_SECRET=${GATEWAYAPI_SECRET}
       - API_TOKEN=${GATEWAYAPI_TOKEN}
@@ -32,7 +33,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_DATABASE=${DATABASE_NAME}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - mysqldata:/var/lib/mysql

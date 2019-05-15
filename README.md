@@ -17,6 +17,7 @@ Integrated with gateway API: https://gatewayapi.com/docs/rest.html#mo-sms-receiv
 ## todo
 
 - store in db?
+- swap express for koa
 - test with number
 - send email on new sms
 - protect graphql with auth
