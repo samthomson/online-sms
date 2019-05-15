@@ -5,6 +5,7 @@ import * as jwt from 'jsonwebtoken'
 import chaiHttp = require('chai-http')
 import server from './../src/server'
 import { sSMSAuthTokenHeader } from './../src/declarations'
+import { SMSModel } from './../src/db/models'
 
 chai.use(chaiHttp)
 
@@ -110,10 +111,21 @@ describe('server', async () => {
 
 		it('succeed under normal conditions', async () => {
 			// post message with correct paramameters and reasonable values
+			// should store a message in the database
+			// get count
+			const nMessages = await SMSModel.count()
+
+			// submit request
 			const oMissingParametersResponse = await request(server)
 				.post('/handlesms')
 				.set(sSMSAuthTokenHeader, sSignedSMS)
 			chai.expect(oMissingParametersResponse.status).to.eql(200)
+
+			// get count again
+			const nMessagesPlusOne = await SMSModel.count()
+
+			// count should be one more
+			chai.expect(nMessagesPlusOne).to.equal(nMessages + 1)
 		})
 
 		it('succeeds when optional parameters are sent too', async () => {
@@ -122,10 +134,6 @@ describe('server', async () => {
 				.post('/handlesms')
 				.set(sSMSAuthTokenHeader, sSignedSMSOptionalParams)
 			chai.expect(oOptionalParametersResponse.status).to.eql(200)
-		})
-
-		it('stores a received message in the database', async () => {
-			chai.expect(true).to.equal(false)
 		})
 	})
 })

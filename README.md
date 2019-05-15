@@ -16,12 +16,10 @@ Integrated with gateway API: https://gatewayapi.com/docs/rest.html#mo-sms-receiv
 
 ## todo
 
-- store in db?
-	- different db for testing
-	- test storage works
-- swap express for koa
 - test with number
 - send email on new sms
 - protect graphql with auth
 - UI
+- swap express for koa
 - server: root relative imports
+- server: TS friendly sequelize connection
