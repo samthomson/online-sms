@@ -22,6 +22,7 @@ var corsOptions = {
 app.use(cors(corsOptions))
 
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.get('/', ({}, response: Response) => {
 	response.send('root')
