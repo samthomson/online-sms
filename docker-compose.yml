@@ -17,6 +17,7 @@ services:
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_DATABASE_TESTING=${MYSQL_DATABASE_TESTING}
       - MYSQL_USER=root
       - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - API_KEY=${GATEWAYAPI_KEY}
