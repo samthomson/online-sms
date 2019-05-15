@@ -2,11 +2,13 @@ import * as Sequelize from 'sequelize'
 import db from './connection'
 
 export const SMSModel = db.define('smss', {
-	sms_id: {
+	local_id: {
 		type: Sequelize.INTEGER,
+		autoIncrement: true,
+		primaryKey: true,
 	},
 	msisdn: {
-		type: Sequelize.INTEGER,
+		type: Sequelize.BIGINT,
 	},
 	receiver: {
 		type: Sequelize.INTEGER,

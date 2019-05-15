@@ -17,6 +17,8 @@ Integrated with gateway API: https://gatewayapi.com/docs/rest.html#mo-sms-receiv
 ## todo
 
 - store in db?
+	- different db for testing
+	- test storage works
 - swap express for koa
 - test with number
 - send email on new sms

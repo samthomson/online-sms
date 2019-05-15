@@ -10,6 +10,7 @@ import { Application, Response } from 'express'
 import { SMS } from './declarations'
 
 import { bValidSMS } from './lib/validate'
+import { SMSModel } from './db/models'
 
 const app: Application = express()
 
@@ -43,6 +44,8 @@ app.post('/handlesms', _handleSMSAuth, ({}, res: Response) => {
 	}
 
 	// now store it in the db and send an email out
+	const oSaveSMS = SMSModel.build(oSMS)
+	oSaveSMS.save()
 
 	// send 200 Ok
 	res.status(200).send('Ok')
