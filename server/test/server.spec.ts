@@ -123,5 +123,9 @@ describe('server', async () => {
 				.set(sSMSAuthTokenHeader, sSignedSMSOptionalParams)
 			chai.expect(oOptionalParametersResponse.status).to.eql(200)
 		})
+
+		it('stores a received message in the database', async () => {
+			chai.expect(true).to.equal(false)
+		})
 	})
 })

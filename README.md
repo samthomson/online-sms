@@ -21,3 +21,5 @@ Integrated with gateway API: https://gatewayapi.com/docs/rest.html#mo-sms-receiv
 - test with number
 - send email on new sms
 - protect graphql with auth
+- UI
+- server: root relative imports
