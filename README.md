@@ -1,6 +1,6 @@
 # online-sms
 
-Typescript server app which has webhook endpoints for twillio, and a grpahQL API for the client.
+Typescript server app which has webhook endpoints for twillio, and a graphQL API for the client.
 The client is a React TS SPA with redux / graphQL.
 
 ## setup
@@ -16,8 +16,7 @@ Integrated with gateway API: https://gatewayapi.com/docs/rest.html#mo-sms-receiv
 
 ## todo
 
-- tests
-- test with number
 - store in db?
+- test with number
 - send email on new sms
 - protect graphql with auth
