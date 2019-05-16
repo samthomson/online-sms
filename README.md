@@ -25,7 +25,10 @@ Integrated with gateway API: https://gatewayapi.com/docs/rest.html#mo-sms-receiv
 - send email on new sms
 - protect graphql with auth
 - UI
+- paginate results in api
+- paginate in ui
 - swap express for koa
 - server: root relative imports
 - server: TS friendly sequelize connection
 - log 422s?
+	- don't need to log the whole message, could see that in gapi logs, just a failed receipt event
