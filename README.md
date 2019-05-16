@@ -22,7 +22,6 @@ Integrated with gateway API: https://gatewayapi.com/docs/rest.html#mo-sms-receiv
 
 - expose via graphql
 	- why aren't the docs working
-	- test graphql end point after seeding
 - send email on new sms
 - protect graphql with auth
 - UI

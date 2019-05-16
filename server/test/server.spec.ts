@@ -139,6 +139,14 @@ describe('server', async () => {
 
 	describe('graphQL', async () => {
 		it('get messages', async () => {
+			// seed message
+			const sMessageContent: string = 'message content'
+			SMSModel.build({
+				message: sMessageContent,
+				from: 4512345678,
+				time: 1557335005,
+			}).save()
+
 			// post message with correct paramameters and reasonable values
 			const oMessagesResponse = await chai
 				.request(server)
@@ -155,10 +163,9 @@ describe('server', async () => {
 				})
 
 			chai.expect(oMessagesResponse.body.data.messages).to.be.an('array')
-			// chai.expect(
-			// 	oServerTimeResponse.body.data.serverTime,
-			// ).to.be.an('number')
-			// chai.expect(oServerTimeResponse.body.data.serverTime).to.be.above(0)
+			chai.expect(oMessagesResponse.body.data.messages[0].body).to.equal(
+				sMessageContent,
+			)
 		})
 	})
 })
