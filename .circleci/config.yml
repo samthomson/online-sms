@@ -14,6 +14,11 @@ jobs:
   test-server:
     docker:
       - image: mhart/alpine-node
+        environment:
+          - MYSQL_HOST=127.0.0.1
+          - MYSQL_DATABASE=online-sms-testing
+          - MYSQL_USER=root
+          - MYSQL_ROOT_PASSWORD=secretpassword
       - image: mysql:5.7
         environment:
           - MYSQL_ROOT_PASSWORD=secretpassword
