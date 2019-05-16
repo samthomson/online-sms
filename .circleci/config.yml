@@ -16,7 +16,7 @@ jobs:
       - image: mhart/alpine-node
         environment:
           - MYSQL_HOST=127.0.0.1
-          - MYSQL_DATABASE=online-sms-testing
+          - MYSQL_DATABASE_TESTING=online-sms-testing
           - MYSQL_USER=root
           - MYSQL_PASSWORD=secretpassword
       - image: mysql:5.7
@@ -30,7 +30,7 @@ jobs:
           command: |
             cd server
             yarn
-            yarn run test
+            NODE_ENV=testing yarn run test
   build-client:
     docker:
       - image: mhart/alpine-node
