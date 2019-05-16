@@ -6,7 +6,7 @@ import chaiHttp = require('chai-http')
 import server from './../src/server'
 import { sSMSAuthTokenHeader } from './../src/declarations'
 import { SMSModel } from './../src/db/models'
-import { db } from './../src/db/connection'
+import db from './../src/db/connection'
 
 chai.use(chaiHttp)
 
