@@ -20,10 +20,11 @@ const AccountBalanceType = new GraphQLObjectType({
 
 const MessageType = new GraphQLObjectType({
 	name: 'MessagesType',
+	description: 'SMS message list',
 	fields: () => ({
 		id: { type: GraphQLInt },
 		body: { type: GraphQLString },
-		from: { type: GraphQLInt },
+		from: { type: GraphQLFloat },
 		time: { type: GraphQLInt },
 	}),
 })
