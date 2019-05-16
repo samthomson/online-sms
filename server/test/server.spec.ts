@@ -136,4 +136,29 @@ describe('server', async () => {
 			chai.expect(oOptionalParametersResponse.status).to.eql(200)
 		})
 	})
+
+	describe('graphQL', async () => {
+		it('get messages', async () => {
+			// post message with correct paramameters and reasonable values
+			const oMessagesResponse = await chai
+				.request(server)
+				.post('/graphql')
+				.send({
+					query: `
+			  {
+				messages{
+					body,
+					from,
+					time
+				}
+			  }`,
+				})
+
+			chai.expect(oMessagesResponse.body.data.messages).to.be.an('array')
+			// chai.expect(
+			// 	oServerTimeResponse.body.data.serverTime,
+			// ).to.be.an('number')
+			// chai.expect(oServerTimeResponse.body.data.serverTime).to.be.above(0)
+		})
+	})
 })
