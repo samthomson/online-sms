@@ -6,6 +6,7 @@ import chaiHttp = require('chai-http')
 import server from './../src/server'
 import { sSMSAuthTokenHeader } from './../src/declarations'
 import { SMSModel } from './../src/db/models'
+import { db } from './../src/db/connection'
 
 chai.use(chaiHttp)
 
@@ -138,6 +139,11 @@ describe('server', async () => {
 	})
 
 	describe('graphQL', async () => {
+		beforeEach(async () => {
+			// wipe db
+			await db.query('truncate table smsses')
+		})
+
 		it('get messages', async () => {
 			// seed message
 			const sMessageContent: string = 'message content'
